@@ -1,0 +1,43 @@
+{
+  "ecmaVersion": 5,
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "jasmine": {
+      
+    },
+    "complete_strings": {
+      
+    },
+    "jshint": {
+      "config": {
+        "maxerr": 50
+      }
+    },
+    "eslint": {
+      "config": {
+        
+      }
+    },
+    "jscs": {
+      "config": {
+        
+      }
+    },
+    "lint": {
+      "config": {
+        
+      }
+    },
+    "protractor": {
+      
+    }
+  },
+  "libs": [
+    "browser"
+  ]
+}
