@@ -3,7 +3,8 @@
 var zooSite = 'http://thetestroom.com/jswebapp/';
 var pageTitle = 'WELCOME TO THE ZOO ADOPTION CENTER';
 var name = 'Chris Manning';
-var menuOptions = ["Please select from the drop down below","George the Turtle", "Simba the Lion", "Nemo the Fish"];
+var menuOptions = [ "Please select from the drop down below",
+		"George the Turtle", "Simba the Lion", "Nemo the Fish" ];
 
 /**
  * locators
@@ -43,20 +44,27 @@ function getNumOfDropdownOptions(element, num) {
 	});
 }
 
-function getOptionText(element, num, expectedText){
+/**
+ * used to get a specific option values text
+ * 
+ * @param element :
+ *            variable of element.all
+ * @param num :
+ *            interger let m
+ * @param expectedText
+ */
+function getOptionText(element, num, expectedText) {
 	element.then(function(items) {
 		expect(items[num].getText()).toBe(expectedText);
 	});
 }
 
-function assertOptionText(element){
-	for(count = 0; count < menuOptions.length; count++){
+function assertOptionText(element) {
+	for (count = 0; count < menuOptions.length; count++) {
 		getOptionText(element, count, menuOptions[count]);
 	}
-	
+
 }
-
-
 
 /**
  * used to select an element in a select dropdown menu
@@ -71,12 +79,30 @@ function useDropdown(element, optionNum) {
 }
 
 describe('zoo practice test', function() {
-	it('basic test to see if text displays', function() {
+
+	beforeEach(function() {
 		browser.get(zooSite);
+	});
+
+	it('main page load', function() {
 		isLoaded(pg1Title, nameBox);
 		textCheck(pg1Title, pageTitle);
+	});
+
+	it('dynamic text displays', function() {
+		isLoaded(pg1Title, nameBox);
 		nameBox.sendKeys(name);
 		textCheck(nameDisplay, name);
+	});
+
+	it('continue button takes you to page 2', function() {
+		isLoaded(pg1Title, nameBox);
+		contButton.click();
+		isLoaded(pg2Title, animalSelect);
+	});
+
+	it('checks the animal pulldown on page 2', function() {
+		isLoaded(pg1Title, nameBox);
 		contButton.click();
 		isLoaded(pg2Title, animalSelect);
 		getNumOfDropdownOptions(animalOptions, 4);
