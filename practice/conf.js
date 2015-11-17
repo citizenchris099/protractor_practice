@@ -7,7 +7,7 @@ exports.config = {
 		'browserName' : 'chrome'
 	},
 
-	framework : 'jasmine2',
+//	framework : 'jasmine2',
 
 	seleniumAddress : 'http://localhost:4444/wd/hub',
 
